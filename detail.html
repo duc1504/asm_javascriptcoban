@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết</title>
+   
+    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.css">
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha2-dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="css/detail.css">
+  
+</head>
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Thực hiện hàm của bạn ở đây
+    ganData();
+});
+
+function formatTotal(total) {
+      return total.toLocaleString('vi-VN', { minimumFractionDigits: 0 });
+    }
+    // Lấy thông tin sản phẩm đã chọn từ sessionStorage hoặc localStorage
+function ganData() {
+    var selectedProductJSON = sessionStorage.getItem('productChoose');
+if (selectedProductJSON) {
+    var selectedProduct = JSON.parse(selectedProductJSON);
+    document.getElementById('imgSanpham').src=selectedProduct.img;
+    document.getElementById('tenSanPham').innerHTML=selectedProduct.tensp;
+    document.getElementById('giaSanPham').innerHTML=formatTotal(selectedProduct.gia)+' VND';
+}
+
+}
+
+</script>
+<body>
+ <!-- Bắt đầu header -->
+ <header>
+  <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
+      <div class="container">
+          <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+              <div class="ms-auto d-none d-lg-block">
+                  <div class="input-group">
+                  </div>
+              </div>
+              <ul class="navbar-nav ms-auto text-center">
+                  <li class="nav-item">
+                      <a class="nav-link mx-4 text-uppercase" href="index.html">
+                          <h6>Home</h6>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link mx-4 text-uppercase" href="#">
+                          <h6>Shop</h6>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link mx-4 text-uppercase" href="#">
+                          <h6>Page</h6>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link mx-4 text-uppercase" href="#">
+                          <h6>Blog</h6>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link mx-4 text-uppercase" href="#">
+                          <h6>Contact</h6>
+                      </a>
+                  </li>
+              </ul>
+              <ul class="navbar-nav ms-auto text-center">
+                  <li class="nav-item iconGioHang">
+                      <a href="cart.html">
+                          <div id="cart-icon">
+                              <i class="fas fa-shopping-cart"></i>
+                              <span id="cart-count">0</span>
+                          </div>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link mx-2 text-uppercase" href="login.html"><i class="fa-solid fa-circle-user me-1"></i>
+                          Account</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+     
+  </nav>
+</header>
+<!-- Kết thúc header -->
+
+
+
+    <div class="container py-3">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+           
+            <div class="col-lg-12 col-12">
+             <img style="width: 100%;" id="imgSanpham" src="img/product-5.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+            <div class="p-3">
+              <h2 id="tenSanPham">Tên sẽ hiện ở đây</h2>
+            </div>
+            <div class="p-3 d-flex">
+              <p>Thương hiệu :
+              <p class="text-primary">NEEDS OF WISDOM®</p> | Tình trạng: <p class="text-primary">Còn hàng</p>
+              </p>
+            </div>
+    
+            <b>
+              <h1 class="px-3" id="giaSanPham">250.00</h1>
+            </b>
+            <p class="px-3">kích thước</p>
+            <div class="px-3">
+              <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off"
+                checked>
+              <label class="btn btn-outline-primary me-2 " for="success-outlined">M</label>
+              <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+              <label class="btn btn-outline-primary me-2" for="danger-outlined">L</label>
+              <input type="radio" class="btn-check" name="options-outlined" id="xl-outlined" autocomplete="off">
+              <label class="btn btn-outline-primary me-2" for="xl-outlined">XL</label>
+            </div>
+            <p class="px-3 mt-4">Số lượng</p>
+            <div class="col-md-5 col-lg-5 col-xl-3 d-flex my-3">
+              <button class="btn btn-link " onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                <i class="fas fa-minus"></i>
+              </button>
+              <input id="form1" min="1" name="quantity" value="1" type="number" class="form-control form-control-sm" />
+              <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+    
+            <div class="mx-3">
+              <button class="col-md-5 col-lg-5 col-xl-3 btn bg-primary text-light mt-2 " type="submit"><i
+                  class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ</button>
+              <button class="col-md-5 col-lg-5 col-xl-3 btn bg-primary text-light mt-2" type="submit">Mua ngay </button>
+            </div>
+    
+          </div>
+        
+        </div>
+        <h2 class="mt-5">Đánh giá</h2>
+        <div class="comment-area mt-3">
+          <textarea class="form-control" placeholder="Viết đánh giá của bạn tại đây..." rows="5"></textarea>
+        </div>
+        <div class="d-flex justify-content-end mt-3 me-3"> <button type="button" class="btn btn-success">Gửi!</button></div>
+        </div>
+      </div>
+
+       <!-- bắt đầu footer -->
+       <footer class="text-center text-lg-start bg-dark pt-3 mt-3">
+        <div class="container text-center text-md-start mt-5 text-white">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-white">
+                    <img src="img/footer-logo.png" alt="">
+                    <p class="mt-5">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quod,
+                    </p>
+                    <img class="mt-3" src="img/payment.png" alt="">
+                </div>
+
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class=" mb-3">
+                        SHOPPING
+                        <hr>
+                    </h6>
+                    <ul>
+                        <li><a href="#!">Clothing Store</a></li>
+                        <li><a href="#!">Trending Shoes</a></li>
+                        <li><a href="#!">Accessories</a></li>
+                        <li><a href="#!">Sale</a></li>
+
+                    </ul>
+
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class=" mb-3">
+                        INFORMATION
+                        <hr>
+                    </h6>
+                    <ul>
+                        <li><a href="#!">Questions?</a></li>
+                        <li> <a href="#!">Payments Methods</a></li>
+                        <li> <a href="#!">Sizing Charts</a></li>
+                        <li> <a href="#!">Return Policy</a></li>
+                    </ul>
+
+                </div>
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class=" mb-4">
+                        NEWLETTER
+                        <hr>
+                    </h6>
+                    <form class="d-flex flex-column">
+                        <input class="form-control me-2" type="search" placeholder="Email" aria-label="Search">
+                        <button class="btn bg-primary text-light mt-2" type="submit">SUBSCRIBE <i
+                                class="fa-solid fa-right-long"></i></button>
+                    </form>
+                    <div class="d-flex mt-3 icon_footer">
+                        <a href="https://www.facebook.com/duc1504/"><i
+                                class="fa-brands fa-2xl fa-facebook me-2"></i></a>
+                        <a href=""><i class="fa-brands fa-2xl fa-twitter me-2"></i></a>
+                        <a href=""><i class="fa-brands fa-2xl fa-google-plus me-2"></i></a>
+                        <a href=""> <i class="fa-brands fa-2xl fa-pinterest me-2"></i></a>
+                        <a href=""> <i class="fa-brands fa-2xl fa-youtube me-2"></i></a>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="d-flex justify-content-center text-white  footer pb-3">
+            <div class="me-5 d-none d-lg-block">
+                <span><b> ©Designer by Trịnh Ngọc Đức. ALL right reserved.</b></span>
+            </div>
+        </div>
+    </footer>
+    <!-- Kết thúc footer -->
+    <script src="bootstrap-5.3.0-alpha2-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

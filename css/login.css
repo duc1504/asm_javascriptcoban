@@ -1,0 +1,33 @@
+#cart-icon {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  #cart-icon i {
+    font-size: 24px;
+    color: #333; /* Màu của biểu tượng giỏ hàng */
+  }
+  
+  #cart-count {
+    position: absolute;
+    top: -10px; /* Điều chỉnh vị trí của số */
+    right: -10px; /* Điều chỉnh vị trí của số */
+    background-color: #ff5733; /* Màu nền của số */
+    color: #fff; /* Màu của số */
+    border-radius: 50%; /* Bo góc để tạo hình tròn */
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Hiệu ứng khi di chuột qua */
+  #cart-icon:hover #cart-count {
+    background-color: #333; /* Màu nền thay đổi khi di chuột qua */
+    transform: scale(1.2); /* Phóng to số khi di chuột qua */
+  }

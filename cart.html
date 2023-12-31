@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.css">
+  <link rel="stylesheet" href="bootstrap-5.3.0-alpha2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-5.3.0-alpha2-dist/js/bootstrap.bundle.min.js">
+  <link rel="stylesheet" href="css/cart.css">
+  <title>Giỏ hàng</title>
+
+  <script src="js/cart.js">
+  </script>
+</head>
+
+<body>
+
+  <!-- Bắt đầu header -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="ms-auto d-none d-lg-block">
+            <div class="input-group">
+            </div>
+          </div>
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item">
+              <a class="nav-link mx-4 text-uppercase" href="index.html">
+                <h6>Home</h6>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-4 text-uppercase" href="#">
+                <h6>Shop</h6>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-4 text-uppercase" href="#">
+                <h6>Page</h6>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-4 text-uppercase" href="#">
+                <h6>Blog</h6>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-4 text-uppercase" href="#">
+                <h6>Contact</h6>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item">
+              <a class="nav-link mx-2 text-uppercase" href="cart.html"><i class="fa-solid fa-cart-shopping me-1"></i>
+                Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-2 text-uppercase" href=""><i class="fa-solid fa-circle-user me-1"></i>
+                Account</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Kết thúc header -->
+
+
+  <div class="p-2">
+    <div class="d-flex justify-content-evenly align-items-center mb-1">
+      <button onclick="taoCart()">Tạo cart</button>
+      <button onclick="hienCart()">Hiện cart cart</button>
+      <button onclick="xoaCart()">Xóa cart</button>
+    </div>
+
+    <!-- cả giỏ hàng-->
+    <section class=" h-custom">
+      <div class="container py-1 ">
+        <div class="row d-flex justify-content-center align-items-center ">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body p-0">
+                <div class="row g-0">
+                  <div class="col-lg-8">
+                    <div class="p-5">
+                      <div class="d-flex justify-content-between align-items-center mb-5">
+                        <h1 class="fw-bold mb-0 text-black">Giỏ hàng</h1>
+                        <h6 class="mb-0 text-muted" id="slsanpham"></h6>
+                      </div>
+                      <hr class="my-4">
+                      <hr class="my-4">
+                      <div class="row mb-4 d-flex justify-content-between align-items-center">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                          <h6 class="text-black mb-0">Ảnh</h6>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                          <h6 class="text-black mb-0">Tên sản phẩm</h6>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-1">
+                          <h6 class="text-black mb-0">SL</h6>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                          <h6 class="mb-0">Giá</h6>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                          <h6 class="mb-0">Thành tiền</h6>
+                        </div>
+                      </div>
+                      <hr class="my-4">
+                      <div id="giohang">
+                        <!-- sản phẩm sẽ lấy từ mảng và lặp tại đây -->
+                      </div>
+                      <h3 id="xoaCartText"></h3>
+
+
+                     
+                    </div>
+                  </div>
+                  <div class="col-lg-4 bg-grey">
+                    <div class="p-5">
+                      <h1 class="fw-bold mb-5 mt-2 pt-1">Đơn hàng</h1>
+                      <hr class="my-4">
+                      <h6 class="mb-2">Họ và tên</h6>
+                      <form class="d-flex mb-3">
+                        <input class="form-control me-2" id="txtHoTen" type="search" placeholder="Họ và tên người nhận"
+                          aria-label="Search">
+                      </form>
+                      <h6 class="mb-2">Phương thức thanh toán</h6>
+
+                      <div class="mb-3">
+                        <div class="form-check">
+                          <input class="form-check-input" name="phuongthuctt" type="radio" id="rdothanhToanKhiNhanHang">
+                          <label class="form-check-label" for="thanhToanKhiNhanHang">
+                            Thanh toán khi nhận hàng
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="phuongthuctt" type="radio" id="rdovisaMasterCard">
+                          <label class="form-check-label" for="visaMasterCard">
+                            Visa/MasterCard
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="phuongthuctt" type="radio" id="rdoMomo">
+                          <label class="form-check-label" for="momo">
+                            MOMO
+                          </label>
+                        </div>
+                      </div>
+                      <h6 class="mb-2">Tỉnh thành</h6>
+                      <div class="mb-4 pb-2">
+                        <select class="select" id="sltinhThanh" style="width: 250px;">
+                          <option value="">Chọn tỉnh
+                          <option value="An Giang">An Giang
+                          <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu
+                          <option value="Bắc Giang">Bắc Giang
+                          <option value="Bắc Kạn">Bắc Kạn
+                          <option value="Bạc Liêu">Bạc Liêu
+                          <option value="Bắc Ninh">Bắc Ninh
+                          <option value="Bến Tre">Bến Tre
+                          <option value="Bình Định">Bình Định
+                          <option value="Bình Dương">Bình Dương
+                          <option value="Bình Phước">Bình Phước
+                          <option value="Bình Thuận">Bình Thuận
+                          <option value="Bình Thuận">Bình Thuận
+                          <option value="Cà Mau">Cà Mau
+                          <option value="Cao Bằng">Cao Bằng
+                          <option value="Đắk Lắk">Đắk Lắk
+                          <option value="Đắk Nông">Đắk Nông
+                          <option value="Điện Biên">Điện Biên
+                          <option value="Đồng Nai">Đồng Nai
+                          <option value="Đồng Tháp">Đồng Tháp
+                          <option value="Đồng Tháp">Đồng Tháp
+                          <option value="Gia Lai">Gia Lai
+                          <option value="Hà Giang">Hà Giang
+                          <option value="Hà Nam">Hà Nam
+                          <option value="Hà Tĩnh">Hà Tĩnh
+                          <option value="Hải Dương">Hải Dương
+                          <option value="Hậu Giang">Hậu Giang
+                          <option value="Hòa Bình">Hòa Bình
+                          <option value="Hưng Yên">Hưng Yên
+                          <option value="Khánh Hòa">Khánh Hòa
+                          <option value="Kiên Giang">Kiên Giang
+                          <option value="Kon Tum">Kon Tum
+                          <option value="Lai Châu">Lai Châu
+                          <option value="Lâm Đồng">Lâm Đồng
+                          <option value="Lạng Sơn">Lạng Sơn
+                          <option value="Lào Cai">Lào Cai
+                          <option value="Long An">Long An
+                          <option value="Nam Định">Nam Định
+                          <option value="Nghệ An">Nghệ An
+                          <option value="Ninh Bình">Ninh Bình
+                          <option value="Ninh Thuận">Ninh Thuận
+                          <option value="Phú Thọ">Phú Thọ
+                          <option value="Quảng Bình">Quảng Bình
+                          <option value="Quảng Bình">Quảng Bình
+                          <option value="Quảng Ngãi">Quảng Ngãi
+                          <option value="Quảng Ninh">Quảng Ninh
+                          <option value="Quảng Trị">Quảng Trị
+                          <option value="Sóc Trăng">Sóc Trăng
+                          <option value="Sơn La">Sơn La
+                          <option value="Tây Ninh">Tây Ninh
+                          <option value="Thái Bình">Thái Bình
+                          <option value="Thái Nguyên">Thái Nguyên
+                          <option value="Thanh Hóa">Thanh Hóa
+                          <option value="Thừa Thiên Huế">Thừa Thiên Huế
+                          <option value="Tiền Giang">Tiền Giang
+                          <option value="Trà Vinh">Trà Vinh
+                          <option value="Tuyên Quang">Tuyên Quang
+                          <option value="Vĩnh Long">Vĩnh Long
+                          <option value="Vĩnh Phúc">Vĩnh Phúc
+                          <option value="Yên Bái">Yên Bái
+                          <option value="Phú Yên">Phú Yên
+                          <option value="Tp.Cần Thơ">Tp.Cần Thơ
+                          <option value="Tp.Đà Nẵng">Tp.Đà Nẵng
+                          <option value="Tp.Hải Phòng">Tp.Hải Phòng
+                          <option value="Tp.Hà Nội">Tp.Hà Nội
+                          <option value="TP  HCM">TP HCM
+                        </select>
+                      </div>
+                      <hr class="my-4">
+                      <div class="d-flex justify-content-between mb-5">
+                        <h5 class="text-uppercase">Tổng thanh toán</h5>
+                        <h5><b id="tongtienthanhtoan"></b></h5>
+                      </div>
+
+                      <button type="button" class="btn btn-success btn-block btn-lg px-5 py-3" id="btnThanhToan"
+                        data-mdb-ripple-color="dark">Thanh toán</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- kết thúc cả giỏ hàng -->
+  </div>
+   <!-- bắt đầu footer -->
+   <footer class="text-center text-lg-start bg-dark pt-3 mt-3">
+    <div class="container text-center text-md-start mt-5 text-white">
+        <div class="row mt-3">
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-white">
+                <img src="img/footer-logo.png" alt="">
+                <p class="mt-5">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quod,
+                </p>
+                <img class="mt-3" src="img/payment.png" alt="">
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <h6 class=" mb-3">
+                    SHOPPING
+                    <hr>
+                </h6>
+                <ul>
+                    <li><a href="#!">Clothing Store</a></li>
+                    <li><a href="#!">Trending Shoes</a></li>
+                    <li><a href="#!">Accessories</a></li>
+                    <li><a href="#!">Sale</a></li>
+
+                </ul>
+
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <h6 class=" mb-3">
+                    INFORMATION
+                    <hr>
+                </h6>
+                <ul>
+                    <li><a href="#!">Questions?</a></li>
+                    <li> <a href="#!">Payments Methods</a></li>
+                    <li> <a href="#!">Sizing Charts</a></li>
+                    <li> <a href="#!">Return Policy</a></li>
+                </ul>
+
+            </div>
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <h6 class=" mb-4">
+                    NEWLETTER
+                    <hr>
+                </h6>
+                <form class="d-flex flex-column">
+                    <input class="form-control me-2" type="search" placeholder="Email" aria-label="Search">
+                    <button class="btn bg-primary text-light mt-2" type="submit">SUBSCRIBE <i
+                            class="fa-solid fa-right-long"></i></button>
+                </form>
+                <div class="d-flex mt-3 icon_footer">
+                    <a href="https://www.facebook.com/duc1504/"><i
+                            class="fa-brands fa-2xl fa-facebook me-2"></i></a>
+                    <a href=""><i class="fa-brands fa-2xl fa-twitter me-2"></i></a>
+                    <a href=""><i class="fa-brands fa-2xl fa-google-plus me-2"></i></a>
+                    <a href=""> <i class="fa-brands fa-2xl fa-pinterest me-2"></i></a>
+                    <a href=""> <i class="fa-brands fa-2xl fa-youtube me-2"></i></a>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div class="d-flex justify-content-center text-white  footer pb-3">
+        <div class="me-5 d-none d-lg-block">
+            <span><b> ©Designer by Trịnh Ngọc Đức. ALL right reserved.</b></span>
+        </div>
+    </div>
+</footer>
+<!-- Kết thúc footer -->
+</body>
+<script>
+  function kiemTra() {
+    var hoTen = document.getElementById('txtHoTen').value;
+    var rdothanhToanKhiNhanHang = document.getElementById('rdothanhToanKhiNhanHang').checked;
+    //  var rdovisaMasterCard = document.getElementById('rdovisaMasterCard').checked;
+    //  var rdoMomo = document.getElementById('rdoMomo').checked;
+     var sltinhThanh = document.getElementById('sltinhThanh').value;
+    var radioButtons = document.getElementsByName('phuongthuctt');
+
+    var isHoten = true;
+    // validation họ tên
+    if (hoTen.length < 6 || hoTen.length > 30) {
+      alert('Họ tên phải từ 6 đến 30 ký tự.');
+      isHoten=false;
+
+    }
+    // validation phương thức thanh tóa
+    var isAnyChecked = false;
+    // Duyệt qua tất cả radio buttons
+    for (var i = 0; i < radioButtons.length; i++) {
+      if (radioButtons[i].checked) {
+        isAnyChecked = true;
+        break;
+      }
+    }
+    // Kiểm tra xem ít nhất một radio button đã được chọn
+    if (!isAnyChecked) {
+      alert('Vui lòng chọn một phương thức thanh toán.');
+    
+
+    }
+    var ischooseTinh = true;
+    // validation tỉnh thành
+    if (sltinhThanh == '') {
+      alert('Vui lòng chọn tỉnh thành');
+      ischooseTinh =false;
+    }
+    if (isHoten && isAnyChecked && ischooseTinh) {
+      alert('Bạn đã đặt hàng thành công');
+    }
+  }
+  document.getElementById('btnThanhToan').addEventListener('click', kiemTra);
+</script>
+<script src="bootstrap-5.3.0-alpha2-dist/js/bootstrap.bundle.min.js"></script>
+</html>

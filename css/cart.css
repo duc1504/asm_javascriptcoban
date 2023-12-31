@@ -1,0 +1,67 @@
+#xoaCartText{
+    margin: 30px 0 0 300px ;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+
+  button:nth-child(1) {
+    background-color: #007bff;
+    color: white;
+
+  }
+
+
+  button:nth-child(2) {
+    background-color: #28a745;
+    color: white;
+
+  }
+
+
+  button:nth-child(3) {
+    background-color: #dc3545;
+    color: white;
+
+  }
+
+  /* CSS cho footer */
+
+.nav-link:hover {
+  background-color: rgb(209, 209, 209);
+}
+@media only screen and (max-width: 768px) {
+  .sell{
+      display: none;
+  }
+
+}
+ul li a{
+
+  text-decoration: none;
+color: aliceblue;
+
+}
+ul li{
+  margin-top: 12px;
+  list-style: none;
+}
+.icon_footer a{
+  color: aliceblue;
+}
+@media screen and (min-width:989px){
+ .navbar-nav{
+  margin-right: 30px;
+ }
+}
+.nav-link:focus, .nav-link:hover {
+  background-color: rgb(209, 209, 209);
+  color: aliceblue;
+}
