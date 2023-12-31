@@ -70,6 +70,7 @@ var cart = [];
       tinhTongTien();
 
     }
+    setTimeout(hienCart,100);
 
     function doisoluong(sl) {
       var soluong = event.target.value;
